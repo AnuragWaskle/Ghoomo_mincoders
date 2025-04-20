@@ -1,0 +1,244 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+@layer base {
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+}
+
+/* Custom styles */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Loading screen */
+.loading-screen {
+    @apply flex items-center justify-center min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+}
+
+/* Dot typing animation for chatbot */
+.dot-typing {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #3b82f6;
+  animation: dot-typing 1.5s infinite linear;
+}
+
+.dot-typing::before,
+.dot-typing::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #3b82f6;
+  animation: dot-typing 1.5s infinite linear;
+}
+
+.dot-typing::before {
+  left: -12px;
+  animation-delay: 0s;
+}
+
+.dot-typing::after {
+  left: 12px;
+  animation-delay: 0.75s;
+}
+
+@keyframes dot-typing {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Transitions */
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+/* Gradient text */
+.gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600;
+  }
+  
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg;
+  }
+  
+  /* Animated button */
+  .btn-animated {
+    @apply relative overflow-hidden transition-all duration-300;
+  }
+  
+  .btn-animated::after {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-full bg-white opacity-0 transition-opacity duration-300;
+  }
+  
+  .btn-animated:hover::after {
+    @apply opacity-20;
+  }
+  
+  /* Pulsing effect */
+  .pulse-effect {
+    @apply animate-pulse;
+  }
+  
+  /* Image hover zoom */
+  .img-hover-zoom {
+    @apply overflow-hidden;
+  }
+  
+  .img-hover-zoom img {
+    @apply transition-transform duration-500;
+  }
+  
+  .img-hover-zoom:hover img {
+    @apply transform scale-110;
+  }
+  
+  /* Custom scrollbar for the chatbot */
+  .chatbot-messages::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .chatbot-messages::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-800 rounded-full;
+  }
+  
+  .chatbot-messages::-webkit-scrollbar-thumb {
+    @apply bg-blue-400 dark:bg-blue-600 rounded-full;
+  }
+  
+  /* Shimmer loading effect */
+  .shimmer {
+    @apply relative overflow-hidden bg-gray-200 dark:bg-gray-700;
+  }
+  
+  .shimmer::after {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-full;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    animation: shimmer 1.5s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  /* Day/night mode toggle animation */
+  .mode-toggle {
+    @apply relative w-12 h-6 rounded-full bg-gray-300 dark:bg-gray-700 transition-colors duration-300;
+  }
+  
+  .mode-toggle::after {
+    content: '';
+    @apply absolute w-5 h-5 rounded-full bg-white left-0.5 top-0.5 transition-all duration-300;
+  }
+  
+  .dark .mode-toggle::after {
+    @apply transform translate-x-6;
+  }
+  
+  /* Blurred backdrop for modals */
+  .backdrop-blur {
+    @apply backdrop-filter backdrop-blur-sm;
+  }
+  
+  /* Chat bubble animations */
+  .chat-bubble-in {
+    animation: bubbleIn 0.3s ease-out forwards;
+  }
+  
+  .chat-bubble-out {
+    animation: bubbleOut 0.3s ease-in forwards;
+  }
+  
+  @keyframes bubbleIn {
+    0% {
+      opacity: 0;
+      transform: translateY(10px) scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  @keyframes bubbleOut {
+    0% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-10px) scale(0.9);
+    }
+  }
